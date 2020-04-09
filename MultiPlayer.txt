@@ -1,0 +1,115 @@
+////Multiplayer ---> Connect-Four
+#include <SFML/Graphics.hpp>
+#include<iostream>
+#include<vector>
+using namespace std;
+using namespace sf;
+int x, y, a, b;
+int board[10][10];
+int main()
+{
+	bool who_will_play = 0;     //  [ ---> 0 to Player 1 ]   &   [ ---> 1 to Player 2 ]
+	RenderWindow window(VideoMode(1000, 1000), "Connect Four ");
+	Texture texture1;
+	if (!texture1.loadFromFile("Background.png")) cout << "Error loading Background !\n";
+	int j = 0;
+	Sprite sprite1;
+	sprite1.setTexture(texture1);
+	sprite1.setScale(Vector2f(0.98, 1.28));
+	Texture texture2;
+	if (!texture2.loadFromFile("Player1.png")) cout << "Error loading Player(1) !\n";
+	Sprite sprite2[33];
+	sprite2[0].setTexture(texture2);
+	sprite2[0].setPosition(Vector2f(325, 365));
+	Texture texture3;
+	if (!texture3.loadFromFile("Player2.png")) cout << "Error loading Player(2) !\n";
+	Sprite sprite3[33];
+	while (window.isOpen())
+	{
+		Event event;
+		while (window.pollEvent(event))
+		{
+			switch (event.type)
+			{
+			case Event::Closed:
+				window.close();
+				break;
+			case Event::KeyPressed:
+				switch (event.key.code)
+				{
+				case Keyboard::Right:
+					if (x + 1 < 8)
+					{
+						if (!who_will_play)
+						{
+							x++; sprite2[j].move(Vector2f(57.5, 0));
+						}
+						else
+						{
+							x++; sprite3[j].move(Vector2f(57.5, 0));
+						}
+					}
+					break;
+				case Keyboard::Left:
+					if (x - 1 >= 0)
+					{
+						if (!who_will_play)
+						{
+							x--; sprite2[j].move(Vector2f(-57.5, 0));
+						}
+						else
+						{
+							x--; sprite3[j].move(Vector2f(-57.5, 0));
+						}
+					}
+					break;
+				case Keyboard::Enter:
+					if (who_will_play == 0)                 //Player (1)
+					{
+						for (int i = 7; i >= 0; i--)
+						{
+							if (board[i][x] == 0)
+							{
+								board[i][x] = 1;
+								sprite2[j].move(Vector2f(0, (i + 1) * 70));
+								sprite3[j].setTexture(texture3);
+								sprite3[j].setPosition(Vector2f(325, 365));
+								who_will_play = 1;
+								x = 0;
+								break;
+							}
+						}
+					}
+					else if (who_will_play == 1)                 //Player (2)
+					{
+						for (int i = 7; i >= 0; i--)
+						{
+							if (board[i][x] == 0)
+							{
+								board[i][x] = 2;
+								sprite3[j].move(Vector2f(0, (i + 1) * 70));
+								j++;
+								sprite2[j].setTexture(texture2);
+								sprite2[j].setPosition(Vector2f(325, 365));
+								who_will_play = 0;
+								x = 0;
+								break;
+							}
+						}
+					}
+					break;
+				}
+				break;
+			}
+		}
+	window.clear();
+	window.draw(sprite1);
+	for (int i = 0; i <= j&&i <= 31; i++)
+	{
+		window.draw(sprite2[i]);
+		window.draw(sprite3[i]);
+	}
+	window.display();
+}
+return 0;
+}
