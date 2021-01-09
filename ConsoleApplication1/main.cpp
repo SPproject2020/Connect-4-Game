@@ -19,7 +19,7 @@ using namespace sf;
 int column;
 int board[100][100];
 
-RenderWindow window_single, window_option, window_play, window_how, window, window_winner, window_winner2, window_medium, window_multi,window_tie,window_hard;
+RenderWindow window_single, window_option, window_play, window_how, window, window_winner, window_winner2, window_medium, window_multi, window_tie, window_hard;
 RenderWindow window_menu(VideoMode(800, 600), " connect four ");
 
 int j = 0;
@@ -233,7 +233,7 @@ vector<int>ld(int player)
 
 int main()
 {
-	
+
 	ifstream ingame;
 	ingame.open("games.txt");
 
@@ -242,7 +242,7 @@ int main()
 	int games;
 	int numbers;
 	int count = 0;
-	while (!ingame.eof()){
+	while (!ingame.eof()) {
 		ingame >> games;
 		count++;
 	}
@@ -265,7 +265,7 @@ int main()
 	wining text_winner1(300, 600);
 	winner2 text_winner2(300, 600);
 	anoos text_tie(300, 600);
-	 
+
 	RectangleShape line;
 	line.setSize(Vector2f(200, 3));
 	line.setPosition(Vector2f(50, 250));
@@ -299,18 +299,18 @@ int main()
 	{
 		cout << "errorr" << endl;
 	}
-	Texture single_texture , play_texture , menu_texture;
-	if (!single_texture.loadFromFile("single image.jpg")){
+	Texture single_texture, play_texture, menu_texture;
+	if (!single_texture.loadFromFile("single image.jpg")) {
 		cout << "error on single image " << endl;
 	}
-	if (!play_texture.loadFromFile("play image.jpg")){
+	if (!play_texture.loadFromFile("play image.jpg")) {
 		cout << "error on play image " << endl;
 	}
-	if (!menu_texture.loadFromFile("islaam.jpg")){
+	if (!menu_texture.loadFromFile("islaam.jpg")) {
 		cout << "error on menu image " << endl;
 	}
 
-	Sprite background_board1,single_sprite , play_sprite , menu_sprite;
+	Sprite background_board1, single_sprite, play_sprite, menu_sprite;
 	player1[0].setTexture(player1_texture);
 	background_board1.setTexture(board_texture);
 	player1[0].setPosition(Vector2f(325, 365));
@@ -320,7 +320,7 @@ int main()
 	menu_sprite.setTexture(menu_texture);
 
 	Texture texture1;
-	if (!texture1.loadFromFile("UTT.png")){ cout << "Error loading Background !\n"; }
+	if (!texture1.loadFromFile("UTT.png")) { cout << "Error loading Background !\n"; }
 
 	Sprite sprite1;
 	sprite1.setTexture(texture1);
@@ -347,7 +347,7 @@ int main()
 	// Texture ("How to play")
 
 	Texture texture_how;
-	if (!texture_how.loadFromFile("how to play.jpg")){
+	if (!texture_how.loadFromFile("how to play.jpg")) {
 		cout << "error " << endl;
 	}
 	Sprite sprite_how;
@@ -358,7 +358,7 @@ int main()
 	// Menu Music
 
 	Music music, music_play;
-	if (!music.openFromFile("Maxime Abbey - Arabian Feelings.ogg")){
+	if (!music.openFromFile("Maxime Abbey - Arabian Feelings.ogg")) {
 		cout << " error " << endl;
 	}
 	music.play();
@@ -370,13 +370,13 @@ int main()
 	music.setLoop(true);
 
 	SoundBuffer buffer, buffer_hit, buffer_win;
-	if (!buffer.loadFromFile("click.wav")){
+	if (!buffer.loadFromFile("click.wav")) {
 		cout << "error " << endl;
 	}
-	if (!buffer_hit.loadFromFile("coin hit.wav")){
+	if (!buffer_hit.loadFromFile("coin hit.wav")) {
 		cout << "error on coin hit" << endl;
 	}
-	if (!buffer_win.loadFromFile("winning sound.wav")){
+	if (!buffer_win.loadFromFile("winning sound.wav")) {
 		cout << "error on winning sound" << endl;
 	}
 	Sound click, coin_hit, winning;
@@ -398,10 +398,10 @@ int main()
 	move2text.setColor(Color::Red);
 	move2text.setPosition(200, 280);
 
-	while (window.isOpen() || window_winner.isOpen() || window_menu.isOpen() || window_play.isOpen() || window_how.isOpen() || window_single.isOpen() || window_option.isOpen() || window_winner.isOpen() || window_winner2.isOpen() || window_medium.isOpen() || window_multi.isOpen()||window_tie.isOpen()||window_hard.isOpen())
+	while (window.isOpen() || window_winner.isOpen() || window_menu.isOpen() || window_play.isOpen() || window_how.isOpen() || window_single.isOpen() || window_option.isOpen() || window_winner.isOpen() || window_winner2.isOpen() || window_medium.isOpen() || window_multi.isOpen() || window_tie.isOpen() || window_hard.isOpen())
 	{
-		while (window_winner.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_winner.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_winner.close();
 				window.close();
 				window_medium.close();
@@ -417,8 +417,8 @@ int main()
 		window_winner.draw(move1text);
 		window_winner.display();
 
-		while (window_winner2.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_winner2.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_winner2.close();
 				window.close();
 				window_medium.close();
@@ -435,8 +435,8 @@ int main()
 		window_winner2.draw(line2);
 		window_winner2.display();
 
-		while (window_tie.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_tie.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_tie.close();
 				window.close();
 				window_medium.close();
@@ -451,13 +451,13 @@ int main()
 		window_tie.draw(line2);
 		window_tie.display();
 
-		while (window_menu.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_menu.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_menu.close();
 			}
-			switch (evnt.type){
+			switch (evnt.type) {
 			case Event::KeyPressed:
-				switch (evnt.key.code){
+				switch (evnt.key.code) {
 				case Keyboard::Up:
 					text_menu.MoveUp();
 					click.play();
@@ -469,7 +469,7 @@ int main()
 
 				case Keyboard::Enter:
 					click.play();
-					switch (text_menu.GetPressedItem()){
+					switch (text_menu.GetPressedItem()) {
 					case 1:
 						window_play.create(VideoMode(800, 600), "connect 4");
 						window_play.setMouseCursorVisible(false);
@@ -493,13 +493,13 @@ int main()
 		text_menu.draw(window_menu);
 		window_menu.display();
 
-		while (window_play.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_play.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_play.close();
 			}
-			switch (evnt.type){
+			switch (evnt.type) {
 			case Event::KeyPressed:
-				switch (evnt.key.code){
+				switch (evnt.key.code) {
 				case Keyboard::Up:
 					text_play.MoveUp();
 					click.play();
@@ -511,7 +511,7 @@ int main()
 
 				case Keyboard::Enter:
 					click.play();
-					switch (text_play.GetPressedItem()){
+					switch (text_play.GetPressedItem()) {
 					case 0:
 						window_single.create(VideoMode(800, 600), "single level");
 						window_single.setMouseCursorVisible(false);
@@ -540,13 +540,13 @@ int main()
 		text_play.draw(window_play);
 		window_play.display();
 
-		while (window_option.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_option.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_option.close();
 			}
-			switch (evnt.type){
+			switch (evnt.type) {
 			case Event::KeyPressed:
-				switch (evnt.key.code){
+				switch (evnt.key.code) {
 				case Keyboard::Up:
 					text_option.MoveUp();
 					click.play();
@@ -557,7 +557,7 @@ int main()
 					break;
 				case Keyboard::Enter:
 					click.play();
-					switch (text_option.GetPressedItem()){
+					switch (text_option.GetPressedItem()) {
 					case 0:
 						music.pause();
 						break;
@@ -584,13 +584,13 @@ int main()
 		text_option.draw(window_option);
 		window_option.display();
 
-		while (window_single.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_single.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_single.close();
 			}
-			switch (evnt.type){
+			switch (evnt.type) {
 			case Event::KeyPressed:
-				switch (evnt.key.code){
+				switch (evnt.key.code) {
 				case Keyboard::Up:
 					text_single.MoveUp();
 					click.play();
@@ -600,7 +600,7 @@ int main()
 					click.play();
 					break;
 				case Keyboard::Enter:
-					switch (text_single.GetPressedItem()){
+					switch (text_single.GetPressedItem()) {
 					case 0:
 						window.create(VideoMode(1024, 1250), "connect Four");
 						window.setMouseCursorVisible(false);
@@ -638,16 +638,16 @@ int main()
 		window_single.draw(single_sprite);
 		text_single.draw(window_single);
 		window_single.display();
-		while (window_how.pollEvent(evnt)){
-			if (evnt.type == Event::Closed){
+		while (window_how.pollEvent(evnt)) {
+			if (evnt.type == Event::Closed) {
 				window_how.close();
 			}
-			switch (evnt.type){
+			switch (evnt.type) {
 			case Event::KeyPressed:
-				switch (evnt.key.code){
+				switch (evnt.key.code) {
 				case Keyboard::Enter:
 					click.play();
-					switch (text_how.GetPressedItem()){
+					switch (text_how.GetPressedItem()) {
 					case 0:
 						window_option.create(VideoMode(800, 600), "connect four ");
 						window_option.setMouseCursorVisible(false);
@@ -666,7 +666,7 @@ int main()
 		while (window.pollEvent(evnt))
 		{
 
-			if (evnt.type == Event::Closed){
+			if (evnt.type == Event::Closed) {
 				window.close();
 			}
 			if (playy == 0)
@@ -717,7 +717,7 @@ int main()
 							}
 						}
 
-						while (who_will_play&&playy == 0)
+						while (who_will_play && playy == 0)
 						{
 							column = 0;
 							int random_column = rand() % 8;
@@ -755,7 +755,7 @@ int main()
 					break;
 				}
 			}
-			if (playy == 0 && j >= 32){
+			if (playy == 0 && j >= 32) {
 				window_tie.create(VideoMode(300, 600), "Tie Case");
 				window_medium.close();
 				window_multi.close();
@@ -768,15 +768,15 @@ int main()
 
 			window.clear();
 			window.draw(background_board1);
-		
-				for (int i = 0; i <= j && i <= 31; i++)
-				{
-					window.draw(player1[i]);
-					window.draw(player2[i]);
-				}
-			window.display();
-			
+
+			for (int i = 0; i <= j && i <= 31; i++)
+			{
+				window.draw(player1[i]);
+				window.draw(player2[i]);
 			}
+			window.display();
+
+		}
 		///////////////////////////////////////////////mediuuuuuuuuuuummmmmmm//////////////////////////////////////////////////////////////
 		while (window_medium.pollEvent(evnt))
 		{
@@ -885,7 +885,7 @@ int main()
 						board[row - 1][column] = 2;
 						player2[j].setTexture(player2_texture);
 						player2[j].setPosition(sf::Vector2f(325, 365));
-						player2[j].move(sf::Vector2f(column  * 57.5, 70 * (row)));
+						player2[j].move(sf::Vector2f(column * 57.5, 70 * (row)));
 						j++;
 						move2++;
 						player1[j].setTexture(player1_texture);
@@ -960,7 +960,7 @@ int main()
 								window_winner2.create(VideoMode(300, 600), "winner");
 								music_play.stop();
 								winning.play();
-								
+
 							}
 
 							cout << first_empty_row_from_below << " " << random_column << endl;
@@ -979,7 +979,7 @@ int main()
 
 				}
 			}
-			if (playy == 0 && j >= 32){
+			if (playy == 0 && j >= 32) {
 				window_tie.create(VideoMode(300, 600), "Tie Case");
 				window.close();
 				window_medium.close();
@@ -998,134 +998,162 @@ int main()
 			window_medium.draw(player1[i]);
 			window_medium.draw(player2[i]);
 		}
-//////////////////////////////////////////////////////////////Hard lavel/////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////Hard lavel/////////////////////////////////////////////////////////////////////
 
-		
-			while (window_hard.pollEvent(evnt))
+
+		while (window_hard.pollEvent(evnt))
+		{
+			switch (evnt.type)
 			{
-				switch (evnt.type)
+			case sf::Event::Closed:
+				window_hard.close();
+				break;
+				if (playy == 0)
 				{
-				case sf::Event::Closed:
-					window_hard.close();
-					break;
-					if (playy == 0)
+					///////////////////////////////////////////////////////user turn////////////////////////////////////////////////////////
+			case sf::Event::KeyPressed:
+				switch (evnt.key.code)
+				{
+				case sf::Keyboard::Right:
+					if (column + 1 <= 7)
 					{
-						///////////////////////////////////////////////////////user turn////////////////////////////////////////////////////////
-				case sf::Event::KeyPressed:
-					switch (evnt.key.code)
-					{
-					case sf::Keyboard::Right:
-						if (column + 1 <= 7)
-						{
-							column++;
-							player1[j].move(sf::Vector2f(57.5, 0));
-						}
-						break;
-					case sf::Keyboard::Left:
-						if (column - 1 >= 0)
-						{
-							column--;
-							player1[j].move(sf::Vector2f(-57.5, 0));
-						}
-						break;
-					case sf::Keyboard::Enter:
-						if (who_will_play == 0)
-						{
-							for (int first_empty_row_from_below = 7; first_empty_row_from_below >= 0; first_empty_row_from_below--)
-							{
-								if (board[first_empty_row_from_below][column] == 0)
-								{
-									who_will_play = 1;
-									board[first_empty_row_from_below][column] = 1;
-									row = first_empty_row_from_below;
-									player1[j].move(sf::Vector2f(0, (first_empty_row_from_below + 1) * 70));
-									coin_hit.play();
-									move1++;
-									if (check_ddown(first_empty_row_from_below, column, 1) == 4 || check_right_diagonal(first_empty_row_from_below, column, 1)[0] + check_right_diagonal(first_empty_row_from_below, column, 1)[1] == 4 || check_left_diagonal(first_empty_row_from_below, column, 1)[0] + check_left_diagonal(first_empty_row_from_below, column, 1)[1] == 4 || check_Right_Left(first_empty_row_from_below, column, 1)[0] + check_Right_Left(first_empty_row_from_below, column, 1)[1] == 4)
-									{
-										playy = 1;
-										j++;
-										window_winner.create(VideoMode(300, 600), "winner");
-										music_play.stop();
-										winning.play();
-									}
-									break;
-								}
-							}
-						}
-						for (int i = 0; i <= 7; i++)
-						{
-							for (int jj = 0; jj <= 7; jj++)
-							{
-								cout << board[i][jj] << "   ";
-							}
-							cout << endl;
-						}
-						break;
+						column++;
+						player1[j].move(sf::Vector2f(57.5, 0));
 					}
-					////////////////////////////////////////////////////////// HARD HORIZONTAL CHECK  ////////////////////////////////////////
-					while (who_will_play == 1 && playy == 0)
+					break;
+				case sf::Keyboard::Left:
+					if (column - 1 >= 0)
 					{
-						if (who_will_play == 1)
+						column--;
+						player1[j].move(sf::Vector2f(-57.5, 0));
+					}
+					break;
+				case sf::Keyboard::Enter:
+					if (who_will_play == 0)
+					{
+						for (int first_empty_row_from_below = 7; first_empty_row_from_below >= 0; first_empty_row_from_below--)
 						{
-							vector<int>hori = horizontal(2);
+							if (board[first_empty_row_from_below][column] == 0)
+							{
+								who_will_play = 1;
+								board[first_empty_row_from_below][column] = 1;
+								row = first_empty_row_from_below;
+								player1[j].move(sf::Vector2f(0, (first_empty_row_from_below + 1) * 70));
+								coin_hit.play();
+								move1++;
+								if (check_ddown(first_empty_row_from_below, column, 1) == 4 || check_right_diagonal(first_empty_row_from_below, column, 1)[0] + check_right_diagonal(first_empty_row_from_below, column, 1)[1] == 4 || check_left_diagonal(first_empty_row_from_below, column, 1)[0] + check_left_diagonal(first_empty_row_from_below, column, 1)[1] == 4 || check_Right_Left(first_empty_row_from_below, column, 1)[0] + check_Right_Left(first_empty_row_from_below, column, 1)[1] == 4)
+								{
+									playy = 1;
+									j++;
+									window_winner.create(VideoMode(300, 600), "winner");
+									music_play.stop();
+									winning.play();
+								}
+								break;
+							}
+						}
+					}
+					for (int i = 0; i <= 7; i++)
+					{
+						for (int jj = 0; jj <= 7; jj++)
+						{
+							cout << board[i][jj] << "   ";
+						}
+						cout << endl;
+					}
+					break;
+				}
+				////////////////////////////////////////////////////////// HARD HORIZONTAL CHECK  ////////////////////////////////////////
+				while (who_will_play == 1 && playy == 0)
+				{
+					if (who_will_play == 1)
+					{
+						vector<int>hori = horizontal(2);
+						cout << hori[0] << "  " << hori[1] << endl;
+						if (hori[0] != -1 && board[hori[0]][hori[1] + 3] == 0 && (hori[0] == 7 || board[hori[0] + 1][hori[1] + 3] != 0))
+						{
+							board[hori[0]][hori[1] + 3] = 2;
+							player2[j].setTexture(player2_texture);
+							player2[j].setPosition(sf::Vector2f(325, 365));
+							player2[j].move(sf::Vector2f((hori[1] + 3) * 57.5, 70 * (hori[0] + 1)));
+							move2++;
+							j++;
+							who_will_play = 0;
+							column = 0;
+							if (check_ddown(hori[0], hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0] + 3, hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
+							{
+								playy = 1;
+								j++;
+								window_winner2.create(VideoMode(300, 600), "winner");
+								music_play.stop();
+								winning.play();
+								break;
+							}
+							player1[j].setTexture(player1_texture);
+							player1[j].setPosition(sf::Vector2f(325, 365));
+						}
+					}
+					/////////////
+					if (who_will_play == 1)
+					{
+						vector<int>hori = horizontal(1);
+						cout << hori[0] << " " << hori[1] << endl;
+						if (who_will_play == 1 &&
+							hori[0] != -1 && board[hori[0]][hori[1] + 3] == 0 && board[hori[0] + 1][hori[1] + 3] != 0)
+						{
+							board[hori[0]][hori[1] + 3] = 2;
+							player2[j].setTexture(player2_texture);
+							player2[j].setPosition(sf::Vector2f(325, 365));
+							player2[j].move(sf::Vector2f((hori[1] + 3) * 57.5, 70 * (hori[0] + 1)));
+							move2++;
+							j++;
+							who_will_play = 0;
+							column = 0;
+							if (check_ddown(hori[0], hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0], hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
+							{
+								playy = 1;
+								j++;
+								window_winner2.create(VideoMode(300, 600), "winner");
+								music_play.stop();
+								winning.play();
+								break;
+							}
+							player1[j].setTexture(player1_texture);
+							player1[j].setPosition(sf::Vector2f(325, 365));
+						}
+					}
+					/////////////////////////////////////HARD VERTICAL CHECK/////////////////////////////////////////////////
+					if (who_will_play == 1)
+					{
+						vector<int>hori = vertical(2);
+						if (hori[0] != -1 && board[hori[0] - 3][hori[1]] == 0)
+						{
 							cout << hori[0] << "  " << hori[1] << endl;
-							if (hori[0] != -1 && board[hori[0]][hori[1] + 3] == 0 &&(hori[0]==7|| board[hori[0] + 1][hori[1] + 3] != 0))
+							board[hori[0] - 3][hori[1]] = 2;
+							player2[j].setTexture(player2_texture);
+							player2[j].setPosition(sf::Vector2f(325, 365));
+							player2[j].move(sf::Vector2f((hori[1]) * 57.5, 70 * (hori[0] - 2)));
+							move2++;
+							j++;
+							who_will_play = 0;
+							column = 0;
+							if (check_ddown(hori[0] - 3, hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0], hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
 							{
-								board[hori[0]][hori[1] + 3] = 2;
-								player2[j].setTexture(player2_texture);
-								player2[j].setPosition(sf::Vector2f(325, 365));
-								player2[j].move(sf::Vector2f((hori[1] + 3) * 57.5, 70 * (hori[0] + 1)));
-								move2++;
+								playy = 1;
 								j++;
-								who_will_play = 0;
-								column = 0;
-								if (check_ddown(hori[0], hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0] + 3, hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
-								{
-									playy = 1;
-									j++;
-									window_winner2.create(VideoMode(300, 600), "winner");
-									music_play.stop();
-									winning.play();
-									break;
-								}
-								player1[j].setTexture(player1_texture);
-								player1[j].setPosition(sf::Vector2f(325, 365));
+								window_winner2.create(VideoMode(300, 600), "winner");
+								music_play.stop();
+								winning.play();
+								break;
 							}
+							player1[j].setTexture(player1_texture);
+							player1[j].setPosition(sf::Vector2f(325, 365));
 						}
-						/////////////
-						if (who_will_play == 1)
+					}///////////////////////
+					if (who_will_play == 1)
+					{
+						vector<int>hori = vertical(1);
 						{
-							vector<int>hori = horizontal(1);
-							cout << hori[0] << " " << hori[1] << endl;
-							if (who_will_play == 1 &&
-								hori[0] != -1 && board[hori[0]][hori[1] + 3] == 0 && board[hori[0] + 1][hori[1] + 3] != 0)
-							{
-								board[hori[0]][hori[1] + 3] = 2;
-								player2[j].setTexture(player2_texture);
-								player2[j].setPosition(sf::Vector2f(325, 365));
-								player2[j].move(sf::Vector2f((hori[1] + 3) * 57.5, 70 * (hori[0] + 1)));
-								move2++;
-								j++;
-								who_will_play = 0;
-								column = 0;
-								if (check_ddown(hori[0], hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0], hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
-								{
-									playy = 1;
-									j++;
-									window_winner2.create(VideoMode(300, 600), "winner");
-									music_play.stop();
-									winning.play();
-									break;
-								}
-								player1[j].setTexture(player1_texture);
-								player1[j].setPosition(sf::Vector2f(325, 365));
-							}
-						}
-						/////////////////////////////////////HARD VERTICAL CHECK/////////////////////////////////////////////////
-						if (who_will_play == 1)
-						{
-							vector<int>hori = vertical(2);
 							if (hori[0] != -1 && board[hori[0] - 3][hori[1]] == 0)
 							{
 								cout << hori[0] << "  " << hori[1] << endl;
@@ -1137,7 +1165,7 @@ int main()
 								j++;
 								who_will_play = 0;
 								column = 0;
-								if (check_ddown(hori[0] - 3, hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0], hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
+								if (check_ddown(hori[0] + 3, hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0], hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
 								{
 									playy = 1;
 									j++;
@@ -1149,101 +1177,73 @@ int main()
 								player1[j].setTexture(player1_texture);
 								player1[j].setPosition(sf::Vector2f(325, 365));
 							}
-						}///////////////////////
-						if (who_will_play == 1)
+						}
+					}
+					while (who_will_play == 1)
+					{
+
+						row = 0;
+						column = 0;
+						int random_column = rand() % 8;
+						player2[j].setTexture(player2_texture);
+						player2[j].setPosition(sf::Vector2f(325, 365));
+
+						for (int first_empty_row_from_below = 7; first_empty_row_from_below > 0; first_empty_row_from_below--)
 						{
-							vector<int>hori = vertical(1);
+							if (board[first_empty_row_from_below][random_column] == 0)
 							{
-								if (hori[0] != -1 && board[hori[0] - 3][hori[1]] == 0)
+								board[first_empty_row_from_below][random_column] = 2;
+								who_will_play = 0;
+								player2[j].move(sf::Vector2f(random_column * 57.5, 70 * (first_empty_row_from_below + 1)));
+								move2++;
+								if (check_ddown(first_empty_row_from_below, random_column, 2) == 4 || check_right_diagonal(first_empty_row_from_below, random_column, 2)[0] + check_right_diagonal(first_empty_row_from_below, random_column, 2)[1] == 4 || check_left_diagonal(first_empty_row_from_below, random_column, 2)[0] + check_left_diagonal(first_empty_row_from_below, random_column, 2)[1] == 4 || check_Right_Left(first_empty_row_from_below, random_column, 2)[0] + check_Right_Left(first_empty_row_from_below, random_column, 2)[1] == 4)
 								{
-									cout << hori[0] << "  " << hori[1] << endl;
-									board[hori[0] - 3][hori[1]] = 2;
-									player2[j].setTexture(player2_texture);
-									player2[j].setPosition(sf::Vector2f(325, 365));
-									player2[j].move(sf::Vector2f((hori[1]) * 57.5, 70 * (hori[0] - 2)));
-									move2++;
+									playy = 1;
 									j++;
-									who_will_play = 0;
-									column = 0;
-									if (check_ddown(hori[0] + 3, hori[1], 2) == 4 || check_right_diagonal(hori[0], hori[1], 2)[0] + check_right_diagonal(hori[0], hori[1], 2)[1] == 4 || check_left_diagonal(hori[0], hori[1], 2)[0] + check_left_diagonal(hori[0], hori[1], 2)[1] == 4 || check_Right_Left(hori[0], hori[1], 2)[0] + check_Right_Left(hori[0], hori[1], 2)[1] == 4)
-									{
-										playy = 1;
-										j++;
-										window_winner2.create(VideoMode(300, 600), "winner");
-										music_play.stop();
-										winning.play();
-										break;
-									}
+									window_winner2.create(VideoMode(300, 600), "winner");
+									music_play.stop();
+									winning.play();
+									break;
+								}
+								cout << first_empty_row_from_below << " " << random_column << endl;
+								if (playy == 0)
+								{
+									cout << "random \n";
+									j++;
 									player1[j].setTexture(player1_texture);
 									player1[j].setPosition(sf::Vector2f(325, 365));
 								}
-							}
-						}
-						while (who_will_play == 1)
-						{
-
-							row = 0;
-							column = 0;
-							int random_column = rand() % 8;
-							player2[j].setTexture(player2_texture);
-							player2[j].setPosition(sf::Vector2f(325, 365));
-
-							for (int first_empty_row_from_below = 7; first_empty_row_from_below > 0; first_empty_row_from_below--)
-							{
-								if (board[first_empty_row_from_below][random_column] == 0)
-								{
-									board[first_empty_row_from_below][random_column] = 2;
-									who_will_play = 0;
-									player2[j].move(sf::Vector2f(random_column * 57.5, 70 * (first_empty_row_from_below + 1)));
-									move2++;
-									if (check_ddown(first_empty_row_from_below, random_column, 2) == 4 || check_right_diagonal(first_empty_row_from_below, random_column, 2)[0] + check_right_diagonal(first_empty_row_from_below, random_column, 2)[1] == 4 || check_left_diagonal(first_empty_row_from_below, random_column, 2)[0] + check_left_diagonal(first_empty_row_from_below, random_column, 2)[1] == 4 || check_Right_Left(first_empty_row_from_below, random_column, 2)[0] + check_Right_Left(first_empty_row_from_below, random_column, 2)[1] == 4)
-									{
-										playy = 1;
-										j++;
-										window_winner2.create(VideoMode(300, 600), "winner");
-										music_play.stop();
-										winning.play();
-										break;
-									}
-									cout << first_empty_row_from_below << " " << random_column << endl;
-									if (playy == 0)
-									{
-										cout << "random \n";
-										j++;
-										player1[j].setTexture(player1_texture);
-										player1[j].setPosition(sf::Vector2f(325, 365));
-									}
-									break;
-								}
+								break;
 							}
 						}
 					}
-					//////////////////////////////////////////////////////////////////////////////////////////draw**////////////////////////////////////////////////////////////////////////////////////////
-					break;
-					}
 				}
-				if (playy == 0 && j >= 32){
-					window_tie.create(VideoMode(300, 600), "Tie Case");
-					music_play.stop();
-					winning.play();
-					games++;
-					playy = 1;
+				//////////////////////////////////////////////////////////////////////////////////////////draw**////////////////////////////////////////////////////////////////////////////////////////
+				break;
 				}
 			}
-			window_hard.clear();
-			window_hard.draw(background_board1);
-			for (int i = 0; i <= j && i <= 31; i++)
-			{
-				window_hard.draw(player1[i]);
-				window_hard.draw(player2[i]);
+			if (playy == 0 && j >= 32) {
+				window_tie.create(VideoMode(300, 600), "Tie Case");
+				music_play.stop();
+				winning.play();
+				games++;
+				playy = 1;
 			}
-			window_hard.display();
-		
+		}
+		window_hard.clear();
+		window_hard.draw(background_board1);
+		for (int i = 0; i <= j && i <= 31; i++)
+		{
+			window_hard.draw(player1[i]);
+			window_hard.draw(player2[i]);
+		}
+		window_hard.display();
 
 
-//////////////////////////////////////////////////////////////multiplayer////////////////////////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////////////////multiplayer////////////////////////////////////////////////////////////////////
 		Event event;
-	
+
 		while (window_multi.pollEvent(event))
 		{
 			switch (event.type)
@@ -1300,7 +1300,7 @@ int main()
 								{
 									for (int jj = 0; jj < 8; jj++)
 									{
-										
+
 										//checks horizontal win
 										if (board[i][jj] != 0 && board[i][jj] == board[i][jj + 1] && board[i][jj] == board[i][jj + 2] && board[i][jj] == board[i][jj + 3])
 										{
@@ -1312,7 +1312,7 @@ int main()
 											winning.play();
 											games++;
 											player = 0;
-											
+
 										}
 										//checks vertical win
 										if (board[i][jj] != 0 && board[i][jj] == board[i + 1][jj] && board[i][jj] == board[i + 2][jj] && board[i][jj] == board[i + 3][jj])
@@ -1325,7 +1325,7 @@ int main()
 											winning.play();
 											games++;
 											player = 0;
-										
+
 										}
 										//checks diagonal win
 										count = 0;
@@ -1345,7 +1345,7 @@ int main()
 												winning.play();
 												games++;
 												player = 0;
-												
+
 											}
 										}
 										count = 0;
@@ -1365,7 +1365,7 @@ int main()
 												winning.play();
 												games++;
 												player = 0;
-												
+
 											}
 										}
 
@@ -1381,7 +1381,7 @@ int main()
 							sprite3[j].setPosition(Vector2f(325, 365));
 						}
 					}
-				//
+					//
 					else if (who_will_play == 1 && playy == 0)                 //Player (2)
 					{
 						cout << 123;
@@ -1411,7 +1411,7 @@ int main()
 											winning.play();
 											games++;
 											player = 1;
-											
+
 										}
 										//checks vertical win
 										if (board[i][jj] != 0 && board[i][jj] == board[i + 1][jj] && board[i][jj] == board[i + 2][jj] && board[i][jj] == board[i + 3][jj])
@@ -1424,7 +1424,7 @@ int main()
 											winning.play();
 											games++;
 											player = 1;
-											
+
 										}
 										//checks diagonal win
 										count = 0;
@@ -1444,7 +1444,7 @@ int main()
 												winning.play();
 												games++;
 												player = 1;
-												
+
 											}
 
 										}
@@ -1466,9 +1466,9 @@ int main()
 												winning.play();
 												games++;
 												player = 1;
-												
+
 											}
-										
+
 										}
 									}
 								}
@@ -1485,9 +1485,9 @@ int main()
 				}
 				break;
 				}
-				
+
 			}
-			if (playy == 0 && j >= 32){
+			if (playy == 0 && j >= 32) {
 				window_tie.create(VideoMode(300, 600), "Tie Case");
 				music_play.stop();
 				winning.play();
@@ -1496,7 +1496,7 @@ int main()
 				player = 2;
 			}
 		}
-		
+
 		string str = to_string(move1);
 		move1text.setString(str);
 		//counting move 2
@@ -1505,7 +1505,7 @@ int main()
 
 		window_multi.clear();
 		window_multi.draw(sprite1);
-		
+
 		for (int i = 0; i <= j && i <= 31; i++)
 		{
 			window_multi.draw(sprite2[i]);
@@ -1514,28 +1514,28 @@ int main()
 		window_multi.display();
 
 	}
-	
+
 
 	outgame << games;
 	outgame.close();
 	ofstream outleaderboard;
-	outleaderboard.open("leaderboard.txt",ios::app);
+	outleaderboard.open("leaderboard.txt", ios::app);
 	ifstream innumbers;
 	innumbers.open("numbers.txt");
 	innumbers >> numbers;
 	innumbers.close();
-		if (player == 0){
-			outleaderboard << "game " << numbers + 1 << "\t" << "player 1 " << endl;
-			numbers += 1;
-		}
-		if (player == 1){
-			outleaderboard << "game " << numbers + 1<< "\t" << "player 2 " << endl;
-			numbers += 1;
-		}
-		if (player == 2){
-			outleaderboard << "game " << numbers + 1 << "\t" << "Tie " << endl;
-			numbers += 1;
-		}
+	if (player == 0) {
+		outleaderboard << "game " << numbers + 1 << "\t" << "player 1 " << endl;
+		numbers += 1;
+	}
+	if (player == 1) {
+		outleaderboard << "game " << numbers + 1 << "\t" << "player 2 " << endl;
+		numbers += 1;
+	}
+	if (player == 2) {
+		outleaderboard << "game " << numbers + 1 << "\t" << "Tie " << endl;
+		numbers += 1;
+	}
 	ofstream outnumbers;
 	outnumbers.open("numbers.txt");
 	outnumbers << numbers;
@@ -1544,11 +1544,11 @@ int main()
 	char l;
 	ifstream inleaderboard;
 	inleaderboard.open("leaderboard.txt");
-	while (!inleaderboard.eof()){
-		inleaderboard.get(l);	
+	while (!inleaderboard.eof()) {
+		inleaderboard.get(l);
 		cout << l;
 	}
 	inleaderboard.close();
-	
+
 	return 0;
 }
